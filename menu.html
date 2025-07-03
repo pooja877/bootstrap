@@ -1,97 +1,362 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- Add padding for fixed-top navbar -->
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        padding-top: 70px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-img-top {
+    height: 250px;
+    object-fit: cover;
+  }
+      main {
+        flex: 1;
+        margin-bottom: 2rem;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1060; /* Higher than modal backdrop (1050) */
+      }
+
+      .modal-backdrop {
+        z-index: 1050; /* default */
+      }
+    </style>
   </head>
+
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/bootstrap/index.html">Tomato</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/bootstrap/index.html">Tomato</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link " href="/bootstrap/index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/bootstrap/menu.html">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bootstrap/about.html">About us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bootstrap/contact.html">Contact us</a>
+            </li>
+          </ul>
+
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success me-1" type="submit">
+              Search
+            </button>
+          </form>
+
+          <!-- Modal Button -->
+          <div class="d-flex m-1">
+            <button
+              class="btn btn-light me-1"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#signinModal"
+            >
+              Sign in
+            </button>
+            <button
+              class="btn btn-primary me-1"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+            >
+              Login
+            </button>
+          </div>
+
+          <!--login modal-->
+
+          <div
+            class="modal fade"
+            id="loginModal"
+            tabindex="-1"
+            aria-labelledby="loginModalLabel"
+            aria-hidden="true"
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/bootstrap/index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/bootstrap/menu.html">Menu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/bootstrap/about.html">About us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/bootstrap/contact.html">Contact us</a>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success me-1" type="submit">
-                Search
-              </button>
-            </form>
-            <div class="d-flex m-1">
-              <button class="btn btn-light me-1">Sign in</button>
-              <button class="btn btn-primary me-1">Login</button>
+            <div class="modal-dialog modal-dialog-centered">
+              <!-- Centered vertically -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="loginModalLabel">LogIn</h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-floating mb-2">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="floatingInput"
+                        placeholder="name@example.com"
+                      />
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                      <input
+                        type="password"
+                        class="form-control mb-2"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Password</label>
+                    </div>
+
+                    <button class="btn btn-primary w-100 py-2" type="submit">
+                      Login
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- signin Modal -->
+          <div
+            class="modal fade"
+            id="signinModal"
+            tabindex="-1"
+            aria-labelledby="signinModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <!-- Centered vertically -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="signinModalLabel">
+                    Sign In
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                    <div class="form-floating">
+                      <input
+                        type="email"
+                        class="form-control mb-2"
+                        id="floatingInput"
+                        placeholder="name@example.com"
+                      />
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Confirm Password</label>
+                    </div>
+                    <div class="form-check text-start my-3">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="remember-me"
+                        id="checkDefault"
+                      />
+                      <label class="form-check-label" for="checkDefault">
+                        Remember me
+                      </label>
+                    </div>
+                    <button class="btn btn-primary w-100 py-2" type="submit">
+                      Sign in
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </nav>
-    <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="..." class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    </nav>
+   <main class="flex-shrink-0">
+  <div class="container my-5">
+    <!-- Row 1 -->
+    <div class="card-group mb-4">
+      <!-- Card 1 -->
+      <div class="card mx-2">
+        <img src="https://images.unsplash.com/photo-1701579231378-3726490a407b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Paneer Tikka">
+        <div class="card-body">
+          <h5 class="card-title">Paneer Tikka</h5>
+          <p class="card-text">Cubes of paneer marinated in spicy yogurt and grilled over charcoal. Served with mint chutney.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 5 mins ago</small></p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card mx-2">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0" class="card-img-top" alt="Veg Biryani">
+        <div class="card-body">
+          <h5 class="card-title">Veg Biryani</h5>
+          <p class="card-text">Aromatic basmati rice cooked with mixed vegetables, saffron, and traditional Indian spices.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 10 mins ago</small></p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card mx-2">
+        <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="Masala Dosa">
+        <div class="card-body">
+          <h5 class="card-title">Masala Dosa</h5>
+          <p class="card-text">A crispy golden dosa filled with flavorful mashed potatoes. Served with sambar and coconut chutney.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 2 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="card-group">
+      <!-- Card 4 -->
+      <div class="card mx-2">
+        <img src="https://www.yumcurry.com/wp-content/uploads/2021/08/chole-bhature.jpg" class="card-img-top" alt="Chole Bhature">
+        <div class="card-body">
+          <h5 class="card-title">Chole Bhature</h5>
+          <p class="card-text">Spicy chickpea curry served with fluffy deep-fried bhature — a North Indian classic.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 7 mins ago</small></p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card mx-2">
+        <img src="https://www.indianveggiedelight.com/wp-content/uploads/2017/10/palak-paneer-featured.jpg" class="card-img-top" alt="Palak Paneer">
+        <div class="card-body">
+          <h5 class="card-title">Palak Paneer</h5>
+          <p class="card-text">Fresh spinach puree simmered with cottage cheese and mild spices. Healthy and delicious.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 4 mins ago</small></p>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card mx-2">
+        <img src="https://i2.wp.com/vegecravings.com/wp-content/uploads/2017/03/veg-hakka-noodles-recipe-with-step-by-step-instructions.jpg?fit=1838%2C1493&quality=65&strip=all&ssl=1" class="card-img-top" alt="Veg Hakka Noodles">
+        <div class="card-body">
+          <h5 class="card-title">Veg Hakka Noodles</h5>
+          <p class="card-text">Stir-fried noodles tossed with veggies, garlic, and soy sauce for a perfect Indo-Chinese flavor.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 6 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--ice creanm section -->
+
+  <div class="container my-5">
+  <h2 class="mb-4 text-center">Desserts & Refreshments</h2>
+  <div class="card-group">
+    <!-- Ice Cream -->
+    <div class="card mx-2">
+      <img src="https://www.simplysated.com/wp-content/uploads/2014/08/Homemade-Vanilla-Ice-Cream-A22-1-P7270022.jpg" class="card-img-top" alt="Ice Cream">
+      <div class="card-body">
+        <h5 class="card-title">Classic Ice Cream</h5>
+        <p class="card-text">Smooth and creamy vanilla or chocolate ice cream topped with nuts and syrup. A timeless treat for all ages.</p>
+        <p class="card-text"><small class="text-body-secondary">Best served chilled</small></p>
+      </div>
+    </div>
+
+    <!-- Faluda -->
+    <div class="card mx-2">
+      <img src="https://www.sandyathome.com/wp-content/uploads/2017/07/royal-falooda-600x1067.png" class="card-img-top" alt="Faluda">
+      <div class="card-body">
+        <h5 class="card-title">Royal Faluda</h5>
+        <p class="card-text">A delightful mix of rose syrup, vermicelli, sabja seeds, and ice cream. Served chilled for a refreshing experience.</p>
+        <p class="card-text"><small class="text-body-secondary">A summer favorite</small></p>
+      </div>
+    </div>
+
+    <!-- Coco (Tender Coconut) -->
+    <div class="card mx-2">
+      <img src="https://4.imimg.com/data4/LC/NV/MY-9529522/cold-coco-ice-cream-1000x1000.jpg" class="card-img-top" alt="Coco Drink">
+      <div class="card-body">
+        <h5 class="card-title">Cold Coco</h5>
+        <p class="card-text">Refreshing natural coconut water served straight from the shell. A perfect hydrating drink for any time of day.</p>
+        <p class="card-text"><small class="text-body-secondary">100% natural & healthy</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+     <footer class="bg-dark text-white text-center py-4 mt-auto">
+      <div class="container">
+        <p class="mb-1">&copy; 2025 Spice Delight. All rights reserved.</p>
+        <p class="mb-0">
+          123 Food Street, Mumbai, India | Phone: +91 98765 43210
+        </p>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

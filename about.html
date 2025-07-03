@@ -1,11 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>About</h1>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- Add padding for fixed-top navbar -->
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        padding-top: 70px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1;
+        margin-bottom: 2rem;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1060; /* Higher than modal backdrop (1050) */
+      }
+
+      .modal-backdrop {
+        z-index: 1050; /* default */
+      }
+
+      .about-section {
+        background-color: #f8f9fa;
+        padding: 60px 0;
+      }
+      .about-img {
+        border-radius: 10px;
+        max-height: 400px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/bootstrap/index.html">Tomato</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/bootstrap/index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bootstrap/menu.html">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/bootstrap/about.html">About us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bootstrap/contact.html">Contact us</a>
+            </li>
+          </ul>
+
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success me-1" type="submit">
+              Search
+            </button>
+          </form>
+
+          <!-- Modal Button -->
+          <div class="d-flex m-1">
+            <button
+              class="btn btn-light me-1"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#signinModal"
+            >
+              Sign in
+            </button>
+            <button
+              class="btn btn-primary me-1"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+            >
+              Login
+            </button>
+          </div>
+
+          <!--login modal-->
+
+          <div
+            class="modal fade"
+            id="loginModal"
+            tabindex="-1"
+            aria-labelledby="loginModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <!-- Centered vertically -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="loginModalLabel">LogIn</h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-floating mb-2">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="floatingInput"
+                        placeholder="name@example.com"
+                      />
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                      <input
+                        type="password"
+                        class="form-control mb-2"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Password</label>
+                    </div>
+
+                    <button class="btn btn-primary w-100 py-2" type="submit">
+                      Login
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- signin Modal -->
+          <div
+            class="modal fade"
+            id="signinModal"
+            tabindex="-1"
+            aria-labelledby="signinModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <!-- Centered vertically -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="signinModalLabel">
+                    Sign In
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                    <div class="form-floating">
+                      <input
+                        type="email"
+                        class="form-control mb-2"
+                        id="floatingInput"
+                        placeholder="name@example.com"
+                      />
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Confirm Password</label>
+                    </div>
+                    <div class="form-check text-start my-3">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="remember-me"
+                        id="checkDefault"
+                      />
+                      <label class="form-check-label" for="checkDefault">
+                        Remember me
+                      </label>
+                    </div>
+                    <button class="btn btn-primary w-100 py-2" type="submit">
+                      Sign in
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!--main content of this page-->
+    <main class="flex-shrink-0">
+            <section class="about-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Image Column -->
+          <div class="col-md-6 mb-4 mb-md-0">
+            <img
+              src="https://www.opentable.co.uk/blog/wp-content/uploads/sites/110/2023/04/safeimagekit-grpetrus1890october202238_rpiipf-3-scaled.jpg"
+              class="img-fluid about-img"
+              alt="Restaurant Image"
+            />
+          </div>
+          <!-- Text Column -->
+          <div class="col-md-6">
+            <h2 class="mb-3">About Us</h2>
+            <p class="lead">
+              Welcome to <strong>Spice Delight</strong> – where flavors meet
+              passion. Founded in 2020, our restaurant blends traditional
+              recipes with a modern twist to serve mouth-watering dishes crafted
+              with love and fresh ingredients.
+            </p>
+            <p>
+              Our chefs bring years of experience, and our staff ensures that
+              you feel right at home every time you visit. Whether it’s a casual
+              dinner or a family celebration, Spice Delight is your perfect
+              culinary destination.
+            </p>
+            <a href="/bootstrap/menu.html" class="btn btn-primary mt-3"
+              >Explore Our Menu</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    </main>
+ <footer class="bg-dark text-white text-center py-4 mt-auto">
+      <div class="container">
+        <p class="mb-1">&copy; 2025 Spice Delight. All rights reserved.</p>
+        <p class="mb-0">
+          123 Food Street, Mumbai, India | Phone: +91 98765 43210
+        </p>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

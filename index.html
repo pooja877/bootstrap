@@ -21,8 +21,19 @@
 
     <!-- Add padding for fixed-top navbar -->
     <style>
+      html,
+      body {
+        height: 100%;
+      }
       body {
         padding-top: 70px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1;
+        margin-bottom: 2rem;
       }
 
       .navbar {
@@ -35,6 +46,13 @@
 
       .modal-backdrop {
         z-index: 1050; /* default */
+      }
+      .hero{
+        width: 100%;
+        height: 450px;
+      }
+      img{
+        object-fit: cover;
       }
     </style>
   </head>
@@ -94,10 +112,68 @@
             >
               Sign in
             </button>
-            <button class="btn btn-primary me-1">Login</button>
+            <button
+              class="btn btn-primary me-1"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+            >
+              Login
+            </button>
           </div>
 
-          <!-- Modal -->
+          <!--login modal-->
+
+          <div
+            class="modal fade"
+            id="loginModal"
+            tabindex="-1"
+            aria-labelledby="loginModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <!-- Centered vertically -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="loginModalLabel">LogIn</h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-floating mb-2">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="floatingInput"
+                        placeholder="name@example.com"
+                      />
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                      <input
+                        type="password"
+                        class="form-control mb-2"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Password</label>
+                    </div>
+
+                    <button class="btn btn-primary w-100 py-2" type="submit">
+                      Login
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- signin Modal -->
           <div
             class="modal fade"
             id="signinModal"
@@ -120,19 +196,50 @@
                   ></button>
                 </div>
                 <div class="modal-body">
-                  Add your sign-in form or content here.
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button type="button" class="btn btn-primary">
-                    Save changes
-                  </button>
+                  <form>
+                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                    <div class="form-floating">
+                      <input
+                        type="email"
+                        class="form-control mb-2"
+                        id="floatingInput"
+                        placeholder="name@example.com"
+                      />
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Confirm Password</label>
+                    </div>
+                    <div class="form-check text-start my-3">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="remember-me"
+                        id="checkDefault"
+                      />
+                      <label class="form-check-label" for="checkDefault">
+                        Remember me
+                      </label>
+                    </div>
+                    <button class="btn btn-primary w-100 py-2" type="submit">
+                      Sign in
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -140,220 +247,167 @@
         </div>
       </div>
     </nav>
+    <main class="flex-shrink-0">
+      <!-- Content (Add your page content here) -->
+      <div class="container">
+        <div id="carouselExampleDark" class="carousel carousel-light slide">
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleDark"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleDark"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleDark"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <div class="hero">
+                <img
+                src="https://interiordesign.net/wp-content/uploads/2022/10/Interior-Design-iCrave-53-idx221001_icrave10-2-headercrop-1024x512.png"
+                class="d-block w-100 "
+                alt="..."
+              />
+              </div>
+              <div class="carousel-caption d-none d-md-block text-white">
+                <h3>Welcome to Spice Delight</h3>
+                <p>
+                  Where every meal is a celebration of flavor and tradition.
+                  Freshly made. Lovingly served.
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+             <div class="hero">
+               <img
+                src="https://i.pinimg.com/originals/e1/da/d5/e1dad5315972c8a9db86fb01d69c7ecb.jpg"
+                class="d-block w-100"
+                alt="..."
+              />
+             </div>
+               <div class="carousel-caption d-none d-md-block text-white">
+                <h3>Welcome to Spice Delight</h3>
+                <p>
+                  Where every meal is a celebration of flavor and tradition.
+                  Freshly made. Lovingly served.
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+             <div class="hero">
+               <img
+                src="https://i.dailymail.co.uk/i/pix/2017/11/08/16/4623608900000578-0-image-a-14_1510156907844.jpg"
+                class="d-block w-100"
+                alt="..."
+              />
+             </div>
+              <div class="carousel-caption d-none d-md-block text-white">
+                <h3>Welcome to Spice Delight</h3>
+                <p>
+                  Where every meal is a celebration of flavor and tradition.
+                  Freshly made. Lovingly served.
+                </p>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
 
-    <!-- Content (Add your page content here) -->
-    <div class="container mt-5">
-      <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#myCarousel"
-            data-bs-slide-to="0"
-            class="active"
-            aria-label="Slide 1"
-            aria-current="true"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#myCarousel"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-            class=""
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#myCarousel"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-            class=""
-          ></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <svg
-              aria-hidden="true"
-              class="bd-placeholder-img"
-              height="100%"
-              preserveAspectRatio="xMidYMid slice"
-              width="100%"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-color)"
-              ></rect>
-            </svg>
-            <div class="container">
-              <div class="carousel-caption text-start">
-                <h1>Example headline.</h1>
-                <p class="opacity-75">
-                  Some representative placeholder content for the first slide of
-                  the carousel.
-                </p>
-                <p>
-                  <a class="btn btn-lg btn-primary" href="#">Sign up today</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <svg
-              aria-hidden="true"
-              class="bd-placeholder-img"
-              height="100%"
-              preserveAspectRatio="xMidYMid slice"
-              width="100%"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-color)"
-              ></rect>
-            </svg>
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>
-                  Some representative placeholder content for the second slide
-                  of the carousel.
-                </p>
-                <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <svg
-              aria-hidden="true"
-              class="bd-placeholder-img"
-              height="100%"
-              preserveAspectRatio="xMidYMid slice"
-              width="100%"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                width="100%"
-                height="100%"
-                fill="var(--bs-secondary-color)"
-              ></rect>
-            </svg>
-            <div class="container">
-              <div class="carousel-caption text-end">
-                <h1>One more for good measure.</h1>
-                <p>
-                  Some representative placeholder content for the third slide of
-                  this carousel.
-                </p>
-                <p>
-                  <a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
-                </p>
-              </div>
-            </div>
+      <div class="container my-5">
+  <h2 class="text-center mb-4">Our Popular Dishes</h2>
+  <div class="row justify-content-center">
+    <!-- Menu Item 1 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <h5 class="card-title">Paneer Butter Masala</h5>
+          <p class="card-text text-muted">Creamy tomato-based curry with soft paneer cubes.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-bold">₹180</span>
+            <button class="btn btn-sm btn-outline-primary">Order</button>
           </div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#myCarousel"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#myCarousel"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
     </div>
 
+    <!-- Menu Item 2 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <h5 class="card-title">Veg Fried Rice</h5>
+          <p class="card-text text-muted">Basmati rice stir-fried with vegetables and sauces.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-bold">₹120</span>
+            <button class="btn btn-sm btn-outline-primary">Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Item 3 -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <h5 class="card-title">Chocolate Faluda</h5>
+          <p class="card-text text-muted">Layered dessert with ice cream, jelly, vermicelli, and chocolate.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-bold">₹90</span>
+            <button class="btn btn-sm btn-outline-primary">Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Menu Button -->
+  <div class="text-center">
+    <a href="/bootstrap/menu.html" class="btn btn-primary px-4 mt-3">View Full Menu</a>
+  </div>
+</div>
+
+    </main>
+
     <!-- Footer -->
 
-    <div class="container footer bg-dark text-light">
-      <footer
-        class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top"
-      >
-        <div class="col mb-3">
-          <a
-            href="/"
-            class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
-            aria-label="Bootstrap"
-          >
-            <svg class="bi me-2" width="40" height="32" aria-hidden="true">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
-          <p class="text-light">© 2025</p>
-        </div>
-        <div class="col mb-3"></div>
-        <div class="col mb-3">
-          <h5>Section</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">Home</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">Features</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">Pricing</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">FAQs</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">About</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col mb-3">
-          <h5>Section</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">Home</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">Features</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">Pricing</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">FAQs</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">About</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col mb-3">
-          <h5>Section</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">Home</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">Features</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">Pricing</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">FAQs</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="#" class="nav-link p-0 text-body-light">About</a>
-            </li>
-          </ul>
-        </div>
-      </footer>
-    </div>
+    <footer class="bg-dark text-white text-center py-4 mt-auto">
+      <div class="container">
+        <p class="mb-1">&copy; 2025 Spice Delight. All rights reserved.</p>
+        <p class="mb-0">
+          123 Food Street, Mumbai, India | Phone: +91 98765 43210
+        </p>
+      </div>
+    </footer>
 
     <!-- Bootstrap JS Bundle -->
     <script
